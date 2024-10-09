@@ -1722,19 +1722,19 @@ engines:
   # and unpack into searx/data/filmliste-v2.db
   # Query to test: "!demo concert"
   #
-  # - name: demo
-  #   engine: sqlite
-  #   shortcut: demo
-  #   categories: general
-  #   result_template: default.html
-  #   database: searx/data/filmliste-v2.db
-  #   query_str:  >-
-  #     SELECT title || ' (' || time(duration, 'unixepoch') || ')' AS title,
-  #            COALESCE( NULLIF(url_video_hd,''), NULLIF(url_video_sd,''), url_video) AS url,
-  #            description AS content
-  #       FROM film
-  #      WHERE title LIKE :wildcard OR description LIKE :wildcard
-  #      ORDER BY duration DESC
+   - name: mediathekview
+     engine: sqlite
+     shortcut: demo
+     categories: general
+     result_template: default.html
+     database: searx/data/filmliste-v2.db
+     query_str:  >-
+       SELECT title || ' (' || time(duration, 'unixepoch') || ')' AS title,
+              COALESCE( NULLIF(url_video_hd,''), NULLIF(url_video_sd,''), url_video) AS url,
+              description AS content
+         FROM film
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        ORDER BY duration DESC
 
   - name: tagesschau
     engine: tagesschau
